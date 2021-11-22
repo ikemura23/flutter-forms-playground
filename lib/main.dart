@@ -75,7 +75,10 @@ class _MyHomePageState extends State<MyHomePage> {
       key: _textFormKey,
       keyboardType: TextInputType.emailAddress,
       autofocus: true,
-      decoration: const InputDecoration(border: OutlineInputBorder()),
+      decoration: const InputDecoration(
+        border: OutlineInputBorder(),
+        suffixIcon: Icon(Icons.visibility),
+      ),
     );
   }
 }
