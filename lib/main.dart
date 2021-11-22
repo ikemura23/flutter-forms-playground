@@ -34,10 +34,19 @@ class _MyHomePageState extends State<MyHomePage> {
   final _mailFormKey = GlobalKey<FormFieldState<String>>();
   final _passwordFormKey = GlobalKey<FormFieldState<String>>();
 
+  final _mailEditingController = TextEditingController();
+  final _passwordEditingController = TextEditingController();
+
   void _incrementCounter() {
     setState(() {
       _counter++;
     });
+  }
+
+  @override
+  void dispose() {
+    _mailEditingController.dispose();
+    super.dispose();
   }
 
   @override
@@ -82,14 +91,21 @@ class _MyHomePageState extends State<MyHomePage> {
       children: [
         TextFormField(
           key: _mailFormKey,
+          controller: _mailEditingController,
           keyboardType: TextInputType.emailAddress,
           autofocus: true,
-          decoration: const InputDecoration(
-            contentPadding: EdgeInsets.only(left: 16),
-            border: OutlineInputBorder(
+          decoration: InputDecoration(
+            contentPadding: const EdgeInsets.only(left: 16),
+            border: const OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(12)),
             ),
-            suffixIcon: Icon(Icons.close),
+            suffixIcon: IconButton(
+              icon: const Icon(Icons.close),
+              onPressed: () {
+                _mailEditingController.clear();
+                // _mailFormKey.currentState?.setValue("");
+              },
+            ),
           ),
         ),
       ],
@@ -103,7 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
         TextFormField(
           key: _passwordFormKey,
           keyboardType: TextInputType.visiblePassword,
-          autofocus: true,
+          controller: _passwordEditingController,
           decoration: const InputDecoration(
             contentPadding: EdgeInsets.only(left: 16, right: 32),
             border: OutlineInputBorder(
@@ -116,7 +132,9 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: const EdgeInsets.only(right: 32),
           child: IconButton(
             icon: const Icon(Icons.close),
-            onPressed: () {},
+            onPressed: () {
+              _passwordEditingController.clear();
+            },
           ),
         ),
       ],
