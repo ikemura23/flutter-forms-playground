@@ -31,7 +31,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   final _formKey = GlobalKey<_MyHomePageState>();
-  final _textFormKey = GlobalKey<FormFieldState<String>>();
+  final _mailFormKey = GlobalKey<FormFieldState<String>>();
+  final _passwordFormKey = GlobalKey<FormFieldState<String>>();
 
   void _incrementCounter() {
     setState(() {
@@ -61,21 +62,51 @@ class _MyHomePageState extends State<MyHomePage> {
         key: _formKey,
         child: Column(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 8),
-            _buildForm(),
+            const Text("メールアドレス"),
+            _buildMailForm(),
+            const SizedBox(height: 8),
+            const Text("パスワード"),
+            _buildPasswordForm(),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildForm() {
+  Widget _buildMailForm() {
     return Stack(
       alignment: Alignment.centerRight,
       children: [
         TextFormField(
-          key: _textFormKey,
+          key: _mailFormKey,
+          keyboardType: TextInputType.emailAddress,
+          autofocus: true,
+          decoration: const InputDecoration(
+            contentPadding: EdgeInsets.only(left: 16, right: 32),
+            border: OutlineInputBorder(),
+            suffixIcon: Icon(Icons.visibility),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(right: 32),
+          child: IconButton(
+            icon: const Icon(Icons.close),
+            onPressed: () {},
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildPasswordForm() {
+    return Stack(
+      alignment: Alignment.centerRight,
+      children: [
+        TextFormField(
+          key: _passwordFormKey,
           keyboardType: TextInputType.emailAddress,
           autofocus: true,
           decoration: const InputDecoration(
