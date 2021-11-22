@@ -86,7 +86,9 @@ class _MyHomePageState extends State<MyHomePage> {
           autofocus: true,
           decoration: const InputDecoration(
             contentPadding: EdgeInsets.only(left: 16),
-            border: OutlineInputBorder(),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(12)),
+            ),
             suffixIcon: Icon(Icons.close),
           ),
         ),
@@ -104,7 +106,9 @@ class _MyHomePageState extends State<MyHomePage> {
           autofocus: true,
           decoration: const InputDecoration(
             contentPadding: EdgeInsets.only(left: 16, right: 32),
-            border: OutlineInputBorder(),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(12)),
+            ),
             suffixIcon: Icon(Icons.visibility),
           ),
         ),
