@@ -71,15 +71,27 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget _buildForm() {
-    return TextFormField(
-      key: _textFormKey,
-      keyboardType: TextInputType.emailAddress,
-      autofocus: true,
-      decoration: const InputDecoration(
-        contentPadding: EdgeInsets.only(left: 16, right: 36),
-        border: OutlineInputBorder(),
-        suffixIcon: Icon(Icons.visibility),
-      ),
+    return Stack(
+      alignment: Alignment.centerRight,
+      children: [
+        TextFormField(
+          key: _textFormKey,
+          keyboardType: TextInputType.emailAddress,
+          autofocus: true,
+          decoration: const InputDecoration(
+            contentPadding: EdgeInsets.only(left: 16, right: 32),
+            border: OutlineInputBorder(),
+            suffixIcon: Icon(Icons.visibility),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(right: 32),
+          child: IconButton(
+            icon: const Icon(Icons.close),
+            onPressed: () {},
+          ),
+        ),
+      ],
     );
   }
 }
