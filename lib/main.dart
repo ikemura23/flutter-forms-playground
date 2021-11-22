@@ -85,16 +85,9 @@ class _MyHomePageState extends State<MyHomePage> {
           keyboardType: TextInputType.emailAddress,
           autofocus: true,
           decoration: const InputDecoration(
-            contentPadding: EdgeInsets.only(left: 16, right: 32),
+            contentPadding: EdgeInsets.only(left: 16),
             border: OutlineInputBorder(),
-            suffixIcon: Icon(Icons.visibility),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(right: 32),
-          child: IconButton(
-            icon: const Icon(Icons.close),
-            onPressed: () {},
+            suffixIcon: Icon(Icons.close),
           ),
         ),
       ],
@@ -107,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
       children: [
         TextFormField(
           key: _passwordFormKey,
-          keyboardType: TextInputType.emailAddress,
+          keyboardType: TextInputType.visiblePassword,
           autofocus: true,
           decoration: const InputDecoration(
             contentPadding: EdgeInsets.only(left: 16, right: 32),
